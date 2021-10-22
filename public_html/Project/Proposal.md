@@ -1,9 +1,9 @@
-# Project Name: (Which Project)
-## Project Summary: (Copy from proposal)
+# Project Name: Simple Bank
+## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
 ## Github Link: (Prod Branch of Project Folder)
-## Project Board Link: 
+## Project Board Link: https://github.com/np649/IT209-009-V2/projects
 ## Website Link: (Heroku Prod of Project folder)
-## Your Name:
+## Your Name: Neal Patel
 
 <!--
 ### Line item / Feature template (use this for each bullet point)
