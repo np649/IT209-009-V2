@@ -23,95 +23,105 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-    - [ ] \(mm/dd/yyyy of completion) User will be able to register a new account
+    - [x] \(mm/dd/yyyy of completion) User will be able to register a new account
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Complete
+        - Direct Link: https://np649-prod.herokuapp.com/Project
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/np649/IT209-009-V2/pull/7
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - ![Mozilla Firefox 11_11_2021 11_14_00 PM](https://user-images.githubusercontent.com/65683440/141408330-8bd9ed9d-c99b-44af-afc2-60d14576ea1a.png)
+
+
         
-    - [ ] \(mm/dd/yyyy of completion) User will be able to login to their account (given they enter the correct credentials)
+    - [x] \(mm/dd/yyyy of completion) User will be able to login to their account (given they enter the correct credentials)
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed
+        - Direct Link: https://np649-prod.herokuapp.com/Project/login.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/np649/IT209-009-V2/pull/7
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - ![Mozilla Firefox 11_11_2021 11_08_50 PM](https://user-images.githubusercontent.com/65683440/141408553-221a6790-e9be-41da-aa66-5ee4b26241fb.png)
+        - ![Mozilla Firefox 11_11_2021 11_14_43 PM](https://user-images.githubusercontent.com/65683440/141408564-072cbd11-bfd1-4a5b-b1f0-2427e294a0be.png)
 
-    - [ ] \(mm/dd/yyyy of completion) User will be able to logout
+
+
+    - [x] \(mm/dd/yyyy of completion) User will be able to logout
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed
+        - Direct Link: https://np649-prod.herokuapp.com/Project/logout.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/np649/IT209-009-V2/pull/7
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - ![Mozilla Firefox 11_11_2021 11_18_16 PM](https://user-images.githubusercontent.com/65683440/141408801-e66e49ba-b2a0-4c18-8a3a-0b2d661d4e50.png)
+
         
-    - [ ] \(mm/dd/yyyy of completion) Basic security rules implemented
+    - [x] \(mm/dd/yyyy of completion) Basic security rules implemented
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed
+        - Direct Link: https://np649-prod.herokuapp.com/Project/login.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/np649/IT209-009-V2/pull/7
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - ![003_create_table_roles sql - IT209-009-V2 - Visual Studio Code 11_11_2021 11_19_53 PM](https://user-images.githubusercontent.com/65683440/141409083-9fe38e9b-8a0e-4af0-b225-eeb60cc3a003.png)
+        - ![Mozilla Firefox 11_11_2021 11_08_50 PM](https://user-images.githubusercontent.com/65683440/141409129-25f09e3e-aaa6-40a5-a892-60f06294ef07.png)
+        - users can only login or register when they are not logged in already
 
-    - [ ] \(mm/dd/yyyy of completion) Basic Roles implemented
-    -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-        - Pull Requests
-        - PR link #1 (repeat as necessary)
-        - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show    
 
-    - [ ] \(mm/dd/yyyy of completion) Site should have basic styles/theme applied; everything should be styled
-    -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-        - Pull Requests
-        - PR link #1 (repeat as necessary)
-        - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
 
-    - [ ] \(mm/dd/yyyy of completion) Any output messages/errors should be “user friendly”
-    -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-        - Pull Requests
-        - PR link #1 (repeat as necessary)
-        - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
 
-    - [ ] \(mm/dd/yyyy of completion) User will be able to see their profile
+    - [x] \(mm/dd/yyyy of completion) Basic Roles implemented
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed
+        - Direct Link: https://np649-prod.herokuapp.com/Project/home.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/np649/IT209-009-V2/pull/24
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - ![004_create_table_userroles sql - IT209-009-V2 - Visual Studio Code 11_11_2021 11_24_54 PM](https://user-images.githubusercontent.com/65683440/141409585-e099c607-a4c9-4b2e-adc9-835ff499506f.png)
 
-    - [ ] \(mm/dd/yyyy of completion) User will be able to edit their profile
+
+    - [x] \(mm/dd/yyyy of completion) Site should have basic styles/theme applied; everything should be styled
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: Completed
+        - Direct Link: https://np649-prod.herokuapp.com/Project/home.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/np649/IT209-009-V2/pull/23
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - ![Mozilla Firefox 11_11_2021 11_18_16 PM](https://user-images.githubusercontent.com/65683440/141409780-bc66705f-d74d-48d0-bc58-8e5708b654b8.png)
+        
+        
+        
+    - [x] \(mm/dd/yyyy of completion) Any output messages/errors should be “user friendly”
+    -  List of Evidence of Feature Completion
+        - Status: Completed
+        - Direct Link: https://np649-prod.herokuapp.com/Project/register.php
+        - Pull Requests
+        - PR link #1 https://github.com/np649/IT209-009-V2/pull/23
+        - Screenshots
+        - ![Basic Roles implemented · Issue #12 · np649_IT209-009-V2 — Mozilla Firefox 11_11_2021 11_32_02 PM](https://user-images.githubusercontent.com/65683440/141410063-94dedd75-f24f-43b2-93b5-9041ee1fb80a.png)
+        - shows a error message to the user that the passwords should match
+
+    - [x] \(mm/dd/yyyy of completion) User will be able to see their profile
+    -  List of Evidence of Feature Completion
+        - Status: Completed
+        - Direct Link: https://np649-prod.herokuapp.com/Project/home.php
+        - Pull Requests
+        - PR link #1 https://github.com/np649/IT209-009-V2/pull/24
+        - Screenshots![Basic Roles implemented · Issue #12 · np649_IT209-009-V2 — Mozilla Firefox 11_11_2021 11_34_59 PM](https://user-images.githubusercontent.com/65683440/141410299-c3180a34-85f7-4a75-836f-e965e3f55b94.png)
+        - home screen displays info about user
+
+        
+
+    - [x] \(mm/dd/yyyy of completion) User will be able to edit their profile
+    -  List of Evidence of Feature Completion
+        - Status: Completed
+        - Direct Link: https://np649-prod.herokuapp.com/Project/profile.php
+        - Pull Requests
+        - PR link #1 https://github.com/np649/IT209-009-V2/pull/24
+        - Screenshots
+        - ![Basic Roles implemented · Issue #12 · np649_IT209-009-V2 — Mozilla Firefox 11_11_2021 11_34_39 PM](https://user-images.githubusercontent.com/65683440/141410373-8a47f2ee-25c3-4a4f-bcb6-505ecdc529e4.png)
+
+
 
 - Milestone 2
 - Milestone 3
