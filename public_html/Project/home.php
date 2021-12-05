@@ -17,7 +17,8 @@ if (is_logged_in(true)) {
       <p class="lead">Choose an action</p>
       <p>
         <a class="btn btn-primary" href="create_account.php" role="button"> Create Account</a>
-        <a class="btn btn-primary" href="accounts.php" role="button"> My Accuonts</a>
+        <a class="btn btn-primary" href="accounts.php" role="button"> My Accounts</a>
+        <a class="btn btn-primary" href="transaction_history.php" role="button"> Transaction History</a>
         <a class="btn btn-primary" href="#" role="button"> Deposit</a>
         <a class="btn btn-primary" href="#" role="button"> Withdraw</a>
         <a class="btn btn-primary" href="#" role="button"> Transfer</a>
