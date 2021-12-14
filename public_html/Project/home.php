@@ -24,7 +24,7 @@ $last_name = get_last_name();
         <a class="btn btn-primary" href="accounts.php" role="button"> Transaction History</a>
         <a class="btn btn-primary" href="transaction.php?type=deposit" role="button"> Deposit</a>
         <a class="btn btn-primary" href="transaction.php?type=withdraw" role="button"> Withdraw</a>
-        <a class="btn btn-primary" href="#" role="button"> Transfer</a>
+        <a class="btn btn-primary" href="transaction.php?type=transfer" role="button"> Transfer</a>
         <a class="btn btn-primary" href="profile.php" role="button"> Profile</a>
       </p>
     </div>
