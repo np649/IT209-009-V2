@@ -9,6 +9,9 @@ if (isset($_POST["save"])) {
     $hasError = false;
     //sanitize
     $email = sanitize_email($email);
+    $first_name = se($_POST, "first_name", null, false);
+    $last_name = se($_POST, "last_name", null, false);
+
     //validate
     if (!is_valid_email($email)) {
         flash("Invalid email address", "danger");
@@ -19,9 +22,9 @@ if (isset($_POST["save"])) {
         $hasError = true;
     }
     if (!$hasError) {
-        $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
+        $params = [":email" => $email, ":username" => $username, ":id" => get_user_id(), ":first_name" => $first_name, ":last_name" => $last_name];
         $db = getDB();
-        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username where id = :id");
+        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username, first_name = :first_name, last_name = :last_name where id = :id");
         try {
             $stmt->execute($params);
         } catch (Exception $e) {
@@ -29,7 +32,7 @@ if (isset($_POST["save"])) {
         }
     }
     //select fresh data from table
-    $stmt = $db->prepare("SELECT id, email, IFNULL(username, email) as `username` from Users where id = :id LIMIT 1");
+    $stmt = $db->prepare("SELECT id, email, IFNULL(username, email) as `username`, first_name, last_name from Users where id = :id LIMIT 1");
     try {
         $stmt->execute([":id" => get_user_id()]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -37,6 +40,8 @@ if (isset($_POST["save"])) {
             //$_SESSION["user"] = $user;
             $_SESSION["user"]["email"] = $user["email"];
             $_SESSION["user"]["username"] = $user["username"];
+            $_SESSION["user"]["first_name"] = $user["first_name"];
+            $_SESSION["user"]["last_name"] = $user["last_name"];
         } else {
             flash("User doesn't exist", "danger");
         }
@@ -84,6 +89,8 @@ if (isset($_POST["save"])) {
 <?php
 $email = get_user_email();
 $username = get_username();
+$first_name = get_first_name();
+$last_name = get_last_name();
 ?>
 <form method="POST" onsubmit="return validate(this);">
     <div class="mb-3">
@@ -93,6 +100,14 @@ $username = get_username();
     <div class="mb-3">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" value="<?php se($username); ?>" />
+    </div>
+    <div class="mb-3">
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" id="first_name" value="<?php se($first_name); ?>" />
+    </div>
+    <div class="mb-3">
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" id="last_name" value="<?php se($last_name); ?>" />
     </div>
     <!-- DO NOT PRELOAD PASSWORD -->
     <div>Password Reset</div>
