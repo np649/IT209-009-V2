@@ -41,36 +41,6 @@ if (!empty($username)) {
           <li class="list-group-item">Type: <?php safer_echo(ucfirst($r["account_type"])); ?></li>
           <li class="list-group-item">Balance: $<?php safer_echo($r["balance"]); ?></li>
         </ul>
-            <?php
-            $t = $t_stmt->execute([ ":q" => $r['id'] ]);
-            if ($t) {
-                $transactions = $t_stmt->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                flash("There was a problem fetching the results");
-            }
-            ?>
-            <?php if (count($transactions) > 0): ?>
-            <table class="table table-bordered table-striped table-sm">
-                <tr>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Amount</th>
-                    <th>Expected Total</th>
-                    <th>Memo</th>
-                    <th>From/To</th>
-                </tr>
-            <?php foreach ($transactions as $t): ?>
-                <tr>
-                    <td><?php safer_echo($t["created"]); ?></td>
-                    <td><?php safer_echo($t["action_type"]); ?></td>
-                    <td>$<?php safer_echo($t["amount"]); ?></td>
-                    <td>$<?php safer_echo($t["expected_total"]); ?></td>
-                    <td><?php safer_echo($t["memo"]); ?></td>
-                    <td><?php safer_echo($t["account_number"]); ?></td>
-                </tr>
-            <?php endforeach; ?>
-            </table>
-            <?php endif; ?>
       </div>
       <?php endforeach; ?>
     <?php else: ?>
