@@ -13,52 +13,65 @@ if (is_logged_in(true)) {
 
 <?php
 
-$id = -1;
-if(isset($_GET["id"])){
-    $id = $_GET["id"];
-}
 $results = [];
-if (isset($id)) {
-    $db = getDB();
-    $stmt = $db->prepare("SELECT A1.account_number as Src, A2.account_number as Dest, expected_total, memo, T.action_type, T.amount from Transactions as T JOIN Accounts as A1 on A1.id = T.act_src_id JOIN Accounts as A2 on A2.id = T.act_dest_id WHERE T.act_src_id=:id LIMIT 10");
-    $r = $stmt->execute([":id" => $id]);
-    if ($r) {
-	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    else {
-        flash("There was a problem fetching the results");
-    }
+if (isset($_SESSION['user']['username'])) {
+  $username = $_SESSION['user']['username'];
+}
+if (!empty($username)) {
+  $db = getDB();
+  $stmt = $db->prepare(
+    "SELECT Accounts.id, account_number, account_type, balance FROM Accounts JOIN Users ON Accounts.user_id = Users.id WHERE Users.username = :q ORDER BY Accounts.id LIMIT 5"
+  );
+  $r = $stmt->execute([":q" => $username]);
+  $t_stmt = $db->prepare(
+    "SELECT amount, action_type, memo, expected_total, created, Accounts.account_number FROM Transactions JOIN Accounts ON Transactions.act_dest_id = Accounts.id WHERE Transactions.act_src_id = :q ORDER BY Transactions.id DESC LIMIT 10"
+  );
+  if ($r) {
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  } else {
+    flash("There was a problem fetching the results");
+  }
 }
 ?>
-
-<table class="table table-bordered">
+    <div class="mt-4">
     <?php if (count($results) > 0): ?>
-        <thead>
-	 <tr class="text-center">
-	   <th scope="col">Account Number (Source)</th>
-           <th scope="col">Account Number (Dest)</th>
-           <th scope="col">Transaction Type</th>
-           <th scope="col">Change</th>
-           <th scope="col">Memo</th>
-           <th scope="col">Balance</th>
-	  </tr>
-	</thead>
-
-            <?php foreach ($results as $r): ?>
-                <tbody>
-		  <tr>
-                    <td class="text-center"><?php safer_echo($r["Src"]);?></td>
-                    <td class="text-center"><?php safer_echo($r["Dest"]);?></td>
-		            <td class="text-center"><?php safer_echo($r["action_type"]);?></td>
-                    <td class="text-center"><?php safer_echo($r["amount"]);?></td>
-                    <td class="text-center"><?php safer_echo($r["memo"]);?></td>
-                    <td class="text-center"><?php safer_echo($r["expected_total"]);?></td>
+      <?php foreach ($results as $r): ?>
+      <div class="card mb-4">
+            <?php
+            $t = $t_stmt->execute([ ":q" => $r['id'] ]);
+            if ($t) {
+                $transactions = $t_stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                flash("There was a problem fetching the results");
+            }
+            ?>
+            <?php if (count($transactions) > 0): ?>
+            <table class="table table-bordered table-striped table-sm">
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Expected Total</th>
+                    <th>Memo</th>
+                    <th>From/To</th>
+                </tr>
+            <?php foreach ($transactions as $t): ?>
+                <tr>
+                    <td><?php safer_echo($t["created"]); ?></td>
+                    <td><?php safer_echo($t["action_type"]); ?></td>
+                    <td>$<?php safer_echo($t["amount"]); ?></td>
+                    <td>$<?php safer_echo($t["expected_total"]); ?></td>
+                    <td><?php safer_echo($t["memo"]); ?></td>
+                    <td><?php safer_echo($t["account_number"]); ?></td>
                 </tr>
             <?php endforeach; ?>
-	  </tbody>
-        </table>
+            </table>
+            <?php endif; ?>
+      </div>
+      <?php endforeach; ?>
     <?php else: ?>
-        <p>No results</p>
+      <p>You don't have any accounts.</p>
     <?php endif; ?>
-</div>
+    </div>
 <?php require(__DIR__ . "/../../partials/flash.php"); ?>
+
