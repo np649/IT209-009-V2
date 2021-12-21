@@ -3,6 +3,9 @@ require_once(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
 ?>
 <?php
+
+$db = getDB();
+
 if (isset($_POST["save"])) {
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
@@ -11,7 +14,8 @@ if (isset($_POST["save"])) {
     $email = sanitize_email($email);
     $first_name = se($_POST, "first_name", null, false);
     $last_name = se($_POST, "last_name", null, false);
-
+    $privacy = se($_POST, "privacy", null, false);
+    
     //validate
     if (!is_valid_email($email)) {
         flash("Invalid email address", "danger");
@@ -24,7 +28,7 @@ if (isset($_POST["save"])) {
     if (!$hasError) {
         $params = [":email" => $email, ":username" => $username, ":id" => get_user_id(), ":first_name" => $first_name, ":last_name" => $last_name];
         $db = getDB();
-        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username, first_name = :first_name, last_name = :last_name where id = :id");
+        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username, first_name = :first_name, last_name = :last_name, privacy = :privacy where id = :id");
         try {
             $stmt->execute($params);
         } catch (Exception $e) {
@@ -32,7 +36,7 @@ if (isset($_POST["save"])) {
         }
     }
     //select fresh data from table
-    $stmt = $db->prepare("SELECT id, email, IFNULL(username, email) as `username`, first_name, last_name from Users where id = :id LIMIT 1");
+    $stmt = $db->prepare("SELECT id, email, IFNULL(username, email) as `username`, first_name, last_name, privacy from Users where id = :id LIMIT 1");
     try {
         $stmt->execute([":id" => get_user_id()]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -42,6 +46,7 @@ if (isset($_POST["save"])) {
             $_SESSION["user"]["username"] = $user["username"];
             $_SESSION["user"]["first_name"] = $user["first_name"];
             $_SESSION["user"]["last_name"] = $user["last_name"];
+            $_SESSION["user"]["privacy"] = $user["privacy"];
         } else {
             flash("User doesn't exist", "danger");
         }
@@ -91,6 +96,7 @@ $email = get_user_email();
 $username = get_username();
 $first_name = get_first_name();
 $last_name = get_last_name();
+$privacy = get_privacy();
 ?>
 <form method="POST" onsubmit="return validate(this);">
     <div class="mb-3">
@@ -109,6 +115,16 @@ $last_name = get_last_name();
         <label for="last_name">Last Name</label>
         <input type="text" name="last_name" id="last_name" value="<?php se($last_name); ?>" />
     </div>
+
+    <div class="form-group">
+        <label for="privacy">Privacy</label>
+        <select class="form-control" id="privacy" name="privacy">
+            <option value="private" <?php echo get_privacy() == "private" ? "selected": ""; ?>>Private</option>
+            <option value="public" <?php echo get_privacy() == "public" ? "selected": ""; ?>>Public</option>
+             </select>
+        <small class="form-text text-muted">Allow other users to see your profile.</small>
+    </div>
+
     <!-- DO NOT PRELOAD PASSWORD -->
     <div>Password Reset</div>
     <div class="mb-3">
