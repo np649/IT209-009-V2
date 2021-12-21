@@ -187,7 +187,7 @@ function changeBalance($db, $src, $dest, $type, $balChange, $memo = '') {
   
 
 
-  function safer_echo($var)
+function safer_echo($var)
 {
   if (!isset($var)) {
     echo "";
@@ -195,3 +195,22 @@ function changeBalance($db, $src, $dest, $type, $balChange, $memo = '') {
   }
   echo htmlspecialchars($var, ENT_QUOTES, "UTF-8");
 }
+
+
+
+function get_first_name()
+{
+    if (is_logged_in()) { //we need to check for login first because "user" key may not exist
+        return se($_SESSION["user"], "first_name", "", false);
+    }
+    return "";
+}
+
+function get_last_name()
+{
+    if (is_logged_in()) { //we need to check for login first because "user" key may not exist
+        return se($_SESSION["user"], "last_name", "", false);
+    }
+    return "";
+}
+
