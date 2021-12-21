@@ -214,3 +214,10 @@ function get_last_name()
     return "";
 }
 
+function get_privacy()
+{
+  if (is_logged_in() && isset($_SESSION["user"]["id"])) {
+    return $_SESSION["user"]["privacy"];
+  }
+  return -1;
+}
