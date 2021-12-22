@@ -19,6 +19,7 @@ if (is_logged_in(true)) {
     <label for="account_type">Account Type</label>
     <select class="form-control" id="account_type" name="account_type">
       <option value="checking">Checking</option>
+      <option value="savings">Savings</option>
 	  </select>
   </div>
   <div class="form-group">
@@ -37,7 +38,7 @@ if (is_logged_in(true)) {
 <?php
 if (isset($_POST["save"])) {
   $db = getDB();
-  $check = $db->prepare('SELECT account_number FROM Accounts WHERE account_number = :q');
+  $check = $db->prepare('SELECT account_number FROM Accounts WHERE account_number = :q AND active = 1');
   do {
     $account_number = rand(100000000000, 999999999999);
     $check->execute([':q' => $account_number]);
@@ -52,15 +53,21 @@ if (isset($_POST["save"])) {
   }
 
   //calc
+  if($account_type == "savings"){
+    $apy = $balance / 10000;
+  } else {
+    $apy = 0;
+  }
   $user = get_user_id();
   $stmt = $db->prepare(
-    "INSERT INTO Accounts (account_number, user_id, account_type, balance) VALUES (:account_number, :user, :account_type, :balance)"
+    "INSERT INTO Accounts (account_number, user_id, account_type, balance, APY) VALUES (:account_number, :user, :account_type, :balance, :apy)"
   );
   $r = $stmt->execute([
     ":account_number" => $account_number,
     ":user" => $user,
     ":account_type" => $account_type,
-    ":balance" => 0
+    ":balance" => 0,
+    ":apy" => $apy
   ]);
   if ($r) {
     changeBalance($db, 1, $db->lastInsertId(), 'deposit', $balance, 'New account deposit');

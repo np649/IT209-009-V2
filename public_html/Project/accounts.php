@@ -19,7 +19,7 @@ if (isset($_SESSION['user']['username'])) {
 if (!empty($username)) {
   $db = getDB();
   $stmt = $db->prepare(
-    "SELECT Accounts.id, account_number, account_type, balance FROM Accounts JOIN Users ON Accounts.user_id = Users.id WHERE Users.username = :q ORDER BY Accounts.id LIMIT 5"
+    "SELECT Accounts.id, account_number, account_type, last_updated, APY, balance FROM Accounts JOIN Users ON Accounts.user_id = Users.id WHERE Users.username = :q AND active = 1 ORDER BY Accounts.id LIMIT 5"
   );
   $r = $stmt->execute([":q" => $username]);
   $t_stmt = $db->prepare(
@@ -38,7 +38,8 @@ if (!empty($username)) {
       <div class="card mb-4">
         <div class="card-header">Account: <b><?php safer_echo($r["account_number"]); ?></b></div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Type: <?php safer_echo(ucfirst($r["account_type"])); ?></li>
+          <li class="list-group-item">Type: <?php safer_echo(ucfirst($r["account_type"])); ?> </li>
+          <li class="list-group-item">APY: <?php safer_echo($r["APY"]); ?>%</li>
           <li class="list-group-item">Balance: $<?php safer_echo($r["balance"]); ?></li>
         </ul>
       </div>
@@ -49,3 +50,4 @@ if (!empty($username)) {
     </div>
 
 <?php require __DIR__ . "/../../partials/flash.php"; ?>
+
