@@ -38,7 +38,7 @@ if (is_logged_in(true)) {
 <?php
 if (isset($_POST["save"])) {
   $db = getDB();
-  $check = $db->prepare('SELECT account_number FROM Accounts WHERE account_number = :q');
+  $check = $db->prepare('SELECT account_number FROM Accounts WHERE account_number = :q AND active = 1');
   do {
     $account_number = rand(100000000000, 999999999999);
     $check->execute([':q' => $account_number]);
