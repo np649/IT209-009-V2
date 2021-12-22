@@ -39,6 +39,7 @@ require_once(__DIR__ . "/../lib/functions.php");
                 <a class="btn btn-primary" href="transaction.php?type=withdraw" role="button"> Withdraw</a>
                 <a class="btn btn-primary" href="transaction.php?type=transfer" role="button"> Transfer</a>
                 <a class="btn btn-primary" href="transfers_funds.php" role="button"> Transfer Out</a>
+                <a class="btn btn-primary" href="create_loan.php" role="button">Create a Loan</a>
                 <a class="btn btn-primary" href="profile.php" role="button"> Profile</a>
             </p>
         <?php endif; ?>
