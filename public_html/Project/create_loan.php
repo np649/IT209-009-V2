@@ -15,7 +15,7 @@ if (is_logged_in(true)) {
 
 $user = get_user_id();
 $db = getDB();
-$stmt = $db->prepare("SELECT * FROM Accounts WHERE user_id = :id AND account_type NOT LIKE 'loan' ORDER BY id ASC");
+$stmt = $db->prepare("SELECT * FROM Accounts WHERE user_id = :id AND account_type NOT LIKE 'loan' AND active = 1 ORDER BY id ASC");
 $stmt->execute([':id' => $user]);
 $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

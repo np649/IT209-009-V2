@@ -19,7 +19,7 @@ if (isset($_SESSION['user']['username'])) {
 if (!empty($username)) {
   $db = getDB();
   $stmt = $db->prepare(
-    "SELECT Accounts.id, account_number, account_type, last_updated, APY, balance FROM Accounts JOIN Users ON Accounts.user_id = Users.id WHERE Users.username = :q ORDER BY Accounts.id LIMIT 5"
+    "SELECT Accounts.id, account_number, account_type, last_updated, APY, balance FROM Accounts JOIN Users ON Accounts.user_id = Users.id WHERE Users.username = :q AND active = 1 ORDER BY Accounts.id LIMIT 5"
   );
   $r = $stmt->execute([":q" => $username]);
   $t_stmt = $db->prepare(
